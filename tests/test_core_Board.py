@@ -43,4 +43,34 @@ def test_3():
     print(board2)
 
 
-test_3()
+# Upside tests will probably don't work.
+
+
+def test_4():
+    """
+    Implemented:
+    The data argument is now validated, and now, need to be a list of Line's.
+    All lines must have the same number of elements.
+    """
+    """ Working
+    board = Board(3, 3)
+    print(type(board[0]) is Line)
+    print(board) 
+    """
+    data1 = [  # Falling
+        [9, 2, 3],
+        [1, 2, 3]
+    ]
+    data2 = [  # Working
+        Line([9, 2, 3]),
+        Line([1, 2, 3])
+    ]
+    data3 = [  # Falling
+        Line([9, 2, 3, 7]),
+        Line([1, 2, 3])
+    ]
+    board = Board(data=data2)
+    print(board)
+
+
+test_4()

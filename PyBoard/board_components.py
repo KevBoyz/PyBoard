@@ -3,7 +3,10 @@ class Line:
         if not data:
             self.line = []
         else:
-            self.line = data
+            if type(data) == list:
+                self.line = data
+            else:
+                raise Exception(f'"data" must be a list. You passed {type(data)} insted')
         self.index = -1
 
     def append(self, obj):
