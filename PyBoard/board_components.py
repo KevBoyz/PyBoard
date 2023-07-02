@@ -15,6 +15,9 @@ class Line:
     def __setitem__(self, key, value):
         self.line[key] = value
 
+    def __getitem__(self, item):
+        return self.line[item]
+
     def __next__(self):
         if self.index == len(self.line) - 1:
             self.index = -1
@@ -32,6 +35,5 @@ class Line:
         return len(self.line)
 
 
-class Column:
-    def __init__(self, data: list):
-        self.column = data
+class Column(Line):
+    ...

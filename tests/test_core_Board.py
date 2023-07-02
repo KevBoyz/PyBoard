@@ -73,4 +73,20 @@ def test_4():
     print(board)
 
 
-test_4()
+def test_5():
+    """
+    Implemented:
+    -Computing columns.
+    """
+    data = [
+        Line([9, 2, 3]),
+        Line([1, 7, 1]),
+        Line([6, 1, 2]),
+        Line([3, 2, 0]),
+        Line([4, 8, 9]),
+    ]
+    b = Board(data=data)
+    print(b.columns)
+
+
+test_5()

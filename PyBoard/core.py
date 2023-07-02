@@ -1,5 +1,5 @@
 from typing import List
-from .board_components import Line
+from .board_components import Line, Column
 
 
 class Board:
@@ -10,18 +10,19 @@ class Board:
                  blank_spaces: bool = False):
         self._n_lines = n_lines
         self._n_columns = n_columns
-        self._board = None
         self.blank_spaces = blank_spaces
-
-        if data:
+        # Defining _board.
+        self._board = None
+        if self._n_lines and self._n_columns:
+            self._build()  # Automatic
+        elif data:  # Manual
             if self._validate_data(data):
                 self._board = data
-            if not self._n_lines or self._n_columns:
                 self._n_lines, self._n_columns = self.get_dims()
-        elif self._n_lines and self._n_columns:
-            self._build()
+
         else:
             raise Exception('The board is empty.')
+        self.columns = self._set_columns()
 
     def _build(self):
         board = []
@@ -42,6 +43,15 @@ class Board:
                     impression += f'{obj} '
             impression += '\n'
         return impression
+
+    def _set_columns(self):
+        columns = []
+        for c in range(0, self._n_columns):
+            column = Column()
+            for lin in self._board:
+                column.append(lin[c])
+            columns.append(column)
+        return columns
 
     def numerate(self):
         i = -1
