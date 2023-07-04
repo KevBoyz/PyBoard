@@ -33,7 +33,33 @@ class Board:
             board.append(line)
         self._board = board
 
-    def _impress(self):
+    def _set_columns(self):
+        columns = []
+        for c in range(0, self._n_columns):
+            column = Column()
+            for lin in self._board:
+                column.append(lin[c])
+            columns.append(column)
+        return columns
+
+    def _get_impress_config(self):
+        config = []
+        for lin in self.columns:
+            longer = self.get_len(max(lin))
+            config.append(longer)
+        return config
+
+    def get_dims(self) -> tuple:
+        row_conter = 0
+        longer_row = []
+        for row in self._board:
+            row_conter += 1
+            if len(row) > len(longer_row):
+                longer_row = row
+        column_conter = len(longer_row)
+        return row_conter, column_conter
+
+    def standard_impress(self):
         impression = ''
         for line in self._board:
             for obj in line:
@@ -44,14 +70,20 @@ class Board:
             impression += '\n'
         return impression
 
-    def _set_columns(self):
-        columns = []
-        for c in range(0, self._n_columns):
-            column = Column()
-            for lin in self._board:
-                column.append(lin[c])
-            columns.append(column)
-        return columns
+    def aligned_impress(self):
+        impression = ''
+        conf = self._get_impress_config()
+        for n_line, lin in enumerate(self._board):
+            for n_item, item in enumerate(lin):
+                length = self.get_len(item)
+                longer = conf[n_item]
+                dif = longer - length
+                if length < longer:
+                    impression += f"{item}{dif * ' '} "
+                else:
+                    impression += f'{item} '
+            impression += '\n'
+        return impression
 
     def numerate(self):
         i = -1
@@ -63,15 +95,16 @@ class Board:
                 if item is None:
                     self._board[i][j] = f'{i}{j}'
 
-    def get_dims(self) -> tuple:
-        row_conter = 0
-        longer_row = []
-        for row in self._board:
-            row_conter += 1
-            if len(row) > len(longer_row):
-                longer_row = row
-        column_conter = len(longer_row)
-        return row_conter, column_conter
+    @staticmethod
+    def get_len(item):
+        try:
+            length = len(item)
+        except TypeError:
+            try:
+                length = len(str(item))
+            except Exception as e:
+                raise Exception(f'Value {item} can not be read by len()\n', e)
+        return length
 
     @staticmethod
     def _validate_data(data):
@@ -90,7 +123,7 @@ class Board:
         return self._board[item]
 
     def __str__(self):
-        return self._impress()
+        return self.aligned_impress()
 
     def __repr__(self):
         return str(self._board)

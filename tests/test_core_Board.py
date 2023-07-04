@@ -89,4 +89,21 @@ def test_5():
     print(b.columns)
 
 
-test_5()
+def test_6():
+    """
+    Implemented:
+    -Align Columns in print
+    """
+    data = [
+        Line([90, 3332, 34]),
+        Line([13, 7, 1]),
+        Line([6, 1000, 2]),
+        Line([333, 2, 400]),
+        Line([4, 8, 9]),
+    ]
+    b = Board(data=data)
+    # print(b.standard_impress())
+    print(b)
+
+
+test_6()
