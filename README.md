@@ -29,12 +29,14 @@ board[1][1] = 555
 board[0][0] = 9999
 print(board)
 >>> 9999 01  02 
-     10  555 12 
-     20  22  22 
+    10   555 12 
+    20   22  22 
 ```
 
 ## Getting it
 `pip install pyboard`
+(This goes work when I finished and upload the 1.0)
+
 
 ## Technologies used
 Python 3.10 pure
