@@ -95,7 +95,7 @@ def test_6():
     -Align Columns in print
     """
     data = [
-        Line([90, 3332, 34]),
+        Line([90, 3332]),
         Line([13, 7, 1]),
         Line([6, 1000, 2]),
         Line([333, 2, 400]),
@@ -106,4 +106,18 @@ def test_6():
     print(b)
 
 
-test_6()
+def test_7():
+    """
+    Implemented:
+    -Board validation is now a property
+    -pseudo private atributes turned into public
+    """
+    data = [
+        [1, 2, 3],
+        [1, 2, 3, 4]
+    ]
+    b = Board(data=data)
+    print(b)
+
+
+test_7()
