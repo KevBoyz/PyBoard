@@ -1,4 +1,4 @@
-from PyBoard import *
+from pyboard import *
 
 
 def test_1():
@@ -120,4 +120,38 @@ def test_7():
     print(b)
 
 
-test_7()
+def test_8():
+    """
+    Implemented:
+    -Board is now iterable
+    """
+    b = Board(3, 3)
+    b.numerate()
+    for line in b:
+        for obj in line:
+            print(obj)
+
+
+def test_9():
+    """
+    Board
+    Implemented:
+    -Columns attr now updates
+    -Column object discarded, turned into a list
+    -Is now possible iterate over board
+    -Append method implemented
+    Bug Fix:
+    -Aligned impress TypeError
+
+    Line
+    Implemented:
+    -Size limited. Append don't work when the value reaches the max.
+    -__get_item__ doesn't raise exceptions.
+    """
+    b = Board(3, 3)
+    b.numerate()
+    b.append(Line(data=[9, 9, 9]))
+    print(b)
+
+
+test_9()

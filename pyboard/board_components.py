@@ -1,5 +1,5 @@
 class Line:
-    def __init__(self, data: list = None):
+    def __init__(self, len_limit: int = 999, data: list = None):
         if not data:
             self.line = []
         else:
@@ -8,15 +8,22 @@ class Line:
             else:
                 raise Exception(f'"data" must be a list. You passed {type(data)} insted')
         self.index = -1
+        self.len_limit = len_limit
 
     def append(self, obj):
-        self.line.append(obj)
+        if not len(self.line) + 1 > self.len_limit:
+            self.line.append(obj)
+        else:
+            raise Exception(f'The line length was reached. [{self.len_limit}]')
 
     def __setitem__(self, key, value):
         self.line[key] = value
 
     def __getitem__(self, item):
-        return self.line[item]
+        try:
+            return self.line[item]
+        except IndexError:
+            return None
 
     def __next__(self):
         if self.index == len(self.line) - 1:

@@ -3,7 +3,7 @@ import os.path
 
 
 setuptools.setup(
-    name='PyBoard',
+    name='pyboard',
     version='1.0',
     license='MIT License',
     author='Kevin Pontes',
