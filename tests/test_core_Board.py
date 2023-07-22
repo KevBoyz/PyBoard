@@ -95,8 +95,8 @@ def test_6():
     -Align Columns in print
     """
     data = [
-        Line([90, 3332]),
-        Line([13, 7, 1]),
+        Line(['Xp0--', 3332, 132]),
+        Line(['life-', 72, 13]),
         Line([6, 1000, 2]),
         Line([333, 2, 400]),
         Line([4, 8, 9]),
@@ -154,4 +154,26 @@ def test_9():
     print(b)
 
 
-test_9()
+def test_10():
+    """
+    Board
+    Changed:
+    -Update is now do by a method.
+    -Board setter now check all elements.
+    -Method order organized.
+    Implemented:
+    - __len__()
+
+    Line
+    Changed:
+    -Length limit was changed by open/close system.
+    """
+    b = Board(3, 3)
+    b.numerate()
+    print(b.get_dims())
+    b.append(Line(data=[9, 9, 9]))
+    print(b.get_dims())
+    # b[0].append(1)  # Exception: The Line is closed. It can' receive more elements.
+
+
+test_10()
