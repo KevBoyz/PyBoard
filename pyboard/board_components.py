@@ -1,22 +1,34 @@
 class Line:
     def __init__(self, data: list = None):
+        """
+        param data: define line directly
+        """
         if not data:
             self.line = []
         else:
             if type(data) == list:
                 self.line = data
             else:
-                raise Exception(f'"data" must be a list. You passed {type(data)} insted')
+                raise Exception(f'"data" must be a list. You passed {type(data)} instead')
         self.index = -1
         self.closed = False
 
     def close(self):
+        """
+        The list will not receive more elements.
+        """
         self.closed = True
 
     def open(self):
+        """
+        The list is open for new elements.
+        """
         self.closed = False
 
     def append(self, obj):
+        """
+        Append only if the list is open.
+        """
         if not self.closed:
             self.line.append(obj)
         else:
