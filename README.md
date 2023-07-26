@@ -1,20 +1,16 @@
 # pyboard: CLI for boards
 
-
-
 ## What is it?
 A Python package that provides a textual interface
 to create board based applications.
 
-Note: Some features are not implemented because this project still in beta.
-
 ## Features
 * Easy board build and edit.
 * An iterable that not trow _out range_ exception (ideal for apps like Minesweeper).
-* Save the state of the board in a json file.
-* Multiple resources to print to Board, including labels, alignment and blank spaces.
+* ~~Save the state of the board in a json file.~~
+* ~~Multiple resources to print to Board, including labels, alignment and blank spaces.~~
 * A way to access lines and columns individually
-* Invert X,Y axis (ideal for lan Chess apps)
+* ~~Invert X,Y axis (ideal for lan Chess apps)~~
 
 ## Example
 ```python
@@ -37,6 +33,4 @@ print(board)
 `pip install pyboard`
 (This goes work when I finished and upload the 1.0)
 
-
-## Technologies used
-Python 3.10 pure
+### Documentation: Quick Start

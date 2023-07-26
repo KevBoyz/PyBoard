@@ -176,4 +176,4 @@ def test_10():
     # b[0].append(1)  # Exception: The Line is closed. It can' receive more elements.
 
 
-test_10()
+    test_10()
